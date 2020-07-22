@@ -35,8 +35,23 @@ catpics = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 @app.route("/")
 @app.route("/index")
 def index():
+    global lastseen, kills
+
+    conn = sqlite3.connect("cat.db")
+    c = conn.cursor()
+    lastquery = c.execute("SELECT * FROM lastseen ORDER BY timestamp DESC LIMIT 1").fetchone()
+    if lastquery is not None:
+        lastseen = datetime.datetime.fromtimestamp(int(lastquery[0]))
+
+    killsquery = c.execute("SELECT * FROM kills ORDER BY count DESC LIMIT 1").fetchone()
+    if killsquery is not None:
+        kills = int(killsquery[1])
+
+    conn.commit()
+    conn.close()
+
     randimg = random.choice(catpics)
-    # print(url_for('static', filename="imgs/Cat/" + randimg, _external=True))
+
     return render_template("index.html", time=lastseen.strftime("%I:%M %p"), date=lastseen.strftime("%m/%d"), kills=kills, catimg="static/imgs/Cat/" + randimg)
 
 
