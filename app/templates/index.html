@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="row my-5">
+
+    <div class="col-md-6 text-center">
+      <div id="lastseen">
+        <h2>Last Seen:</h2>
+        <h2>{{ time }}</h2>
+        <h2>{{ date }}</h2>
+      </div>
+    </div>
+
+    <div class="col-md-6 pt-5 pt-md-0 text-center">
+      <div id="killcount">
+        <h2>Kill count:</h2>
+        <h2>{{ kills }}</h2>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-md-6 text-center">
+      <form action="/newseen" method="post">
+        <h3>
+          Have you seen the cat?
+        </h3>
+        <button class="btn btn-primary">Click here?</button>
+      </form>
+    </div>
+
+    <div class="col-md-6 text-center">
+      <form action="/newkill" method="post">
+        <h3>
+          Did she kill something?
+        </h3>
+        <button class="btn btn-danger">Click here?</button>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="d-flex justify-content-md-center">
+    <div class="col-12 col-md-6">
+      <img src="{{ catimg }}" class="img-fluid" />
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
