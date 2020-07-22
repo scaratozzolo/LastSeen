@@ -6,11 +6,14 @@
         <title>Have you seen the cat?</title>
         {% endif %}
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="refresh" content="300">
         <script src="https://kit.fontawesome.com/259882b2fb.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     </head>
     <body>
-
+        <div class="alert alert-danger text-center" role="alert">
+          If you haven't seen the cat and push the button I will beat you.
+        </div>
 
         {% block content %}{% endblock %}
 

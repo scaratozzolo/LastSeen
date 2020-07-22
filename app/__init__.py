@@ -29,13 +29,15 @@ conn.close()
 
 mypath = "app/static/imgs/Cat"
 catpics = [f for f in listdir(mypath) if isfile(join(mypath, f))]
-
+# print(listdir())
+# print(catpics)
 
 @app.route("/")
 @app.route("/index")
 def index():
     randimg = random.choice(catpics)
-    return render_template("index.html", time=lastseen.strftime("%I:%M %p"), date=lastseen.strftime("%m/%d"), kills=kills, catimg=url_for('static', filename="imgs/Cat/" + randimg))
+    # print(url_for('static', filename="imgs/Cat/" + randimg, _external=True))
+    return render_template("index.html", time=lastseen.strftime("%I:%M %p"), date=lastseen.strftime("%m/%d"), kills=kills, catimg="static/imgs/Cat/" + randimg)
 
 
 @app.route("/newseen", methods=["POST"])
